@@ -1,0 +1,1 @@
+INSERT INTO PRODUIT(Nom, Prix, Catégorie) VALUES('rzsr', '300','livre')

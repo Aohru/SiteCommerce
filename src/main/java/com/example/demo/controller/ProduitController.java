@@ -30,9 +30,45 @@ public class ProduitController {
         return "produits";
     }
 
+    @GetMapping(value = "/prod/prixCroissant")
+    public String afficherlisteProduitsParPrixCroissant(Model model) {
+        model.addAttribute("produits", this.produitRepository.findAllByOrderByPrixAsc());
+        return "produits";
+    }
+
+    @GetMapping(value = "/prod/prixDecroissant")
+    public String afficherlisteProduitsParPrixDecroissant(Model model) {
+        model.addAttribute("produits", this.produitRepository.findAllByOrderByPrixDesc());
+        return "produits";
+    }
+
     @GetMapping(value = "/prod/catégorie/{catégorie}")
     public String afficherProduitsParCatégories(@PathVariable String catégorie, Model model) {
         model.addAttribute("produits", this.produitRepository.findByCatégorie(catégorie));
+        return "produits";
+    }
+    @GetMapping(value = "/prod/catégorie/Informatique")
+    public String afficherProduitsParCatégoriesI(Model model) {
+        model.addAttribute("produits", this.produitRepository.findByCatégorie("Informatique"));
+        return "produits";
+    }
+    @GetMapping(value = "/prod/catégorie/Livre")
+    public String afficherProduitsParCatégoriesL(Model model) {
+        model.addAttribute("produits", this.produitRepository.findByCatégorie("Livre"));
+        return "produits";
+    }
+
+    @GetMapping(value = "/prod/catégorie/Nourriture")
+    public String afficherProduitsParCatégoriesN(Model model) {
+        model.addAttribute("produits", this.produitRepository.findByCatégorie("Nourriture"));
+        return "produits";
+    } @GetMapping(value = "/prod/catégorie/Vêtements")
+    public String afficherProduitsParCatégoriesV(Model model) {
+        model.addAttribute("produits", this.produitRepository.findByCatégorie("Vêtements"));
+        return "produits";
+    } @GetMapping(value = "/prod/catégorie/Bricolage")
+    public String afficherProduitsParCatégoriesB(Model model) {
+        model.addAttribute("produits", this.produitRepository.findByCatégorie("Bricolage"));
         return "produits";
     }
 
@@ -51,6 +87,12 @@ public class ProduitController {
     @PostMapping(value = {"/ajouter"})
     public String ajouterProduit(@ModelAttribute Produit produit) {
         produitRepository.save(produit);
+        return "index";
+    }
+
+    @DeleteMapping(value = {"/prod/id/{id}"})
+    public String supprimerProduit(@PathVariable int idProduit){
+        produitRepository.deleteById(idProduit);
         return "index";
     }
 }

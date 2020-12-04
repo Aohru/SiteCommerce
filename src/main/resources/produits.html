@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
 <body>
 <h1>Liste des produits</h1>
-<select id="type">
-    <option value="">Choisissez une catégorie</option>
-    <option value="Informatique"></option>
-    <option value="Livre">Livre</option>
-    <option value="Nourriture">Nourriture</option>
-    <option value="Vetements">Vêtements</option>
-    <option value="Bricolage">Bricolage</option>
-</select>
-<a th:href="@{/prod/catégorie/{catégorie}}">Informatique</a>
-    <ul th:each ="produit : ${produits}">
-        <li th:utext="${produit.getNom()}"></li>
-        <li th:utext="${produit.getId()}"></li>
-        <li th:utext="${produit.getPrix()}"></li>
-        <button>Acheter</button>
-    </ul>
+<h2>Choisissez une catégorie:</h2>
+<a th:href="@{/prod/catégorie/Informatique}">Informatique</a>
+<a th:href="@{/prod/catégorie/Livre}">Livre</a>
+<a th:href="@{/prod/catégorie/Nourriture}">Nourriture</a>
+<a th:href="@{/prod/catégorie/Vêtements}">Vêtements</a>
+<a th:href="@{/prod/catégorie/Bricolage}">Bricolage</a>
+<br> <a th:href="@{/prod/prixCroissant}">Du moins cher au plus cher</a>
+<br> <a th:href="@{/prod/prixDecroissant}">Du plus cher au moins cher</a>
+
+<ul th:each ="produit : ${produits}">
+    <li>Nom: <h6 th:utext="${produit.getNom()}"></h6></li>
+    <li>Prix: <h6 th:utext="${produit.getPrix()}"></h6></li>
+     <button>Acheter</button>
+</ul>
 
 <a th:href="@{/ajouter}">Ajouter un nouveau produit</a>
 

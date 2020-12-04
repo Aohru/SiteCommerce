@@ -1,1 +1,1 @@
-INSERT INTO PRODUIT(Nom, Prix, Catégorie) VALUES('rzsr', '300','livre')
+INSERT INTO USER(username, password) VALUES('ADMIN', 'ADMIN')

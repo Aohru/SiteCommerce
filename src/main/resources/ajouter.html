@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Add Person</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
 <body>
 <h1>Ajouter un nouveau produit</h1>
@@ -22,7 +22,7 @@
         <div class="form-group row">
             <label th:for="prix" class="col-sm-2 col-form-label">prix</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="prix"
+                <input type="number" class="form-control" id="prix"
                        th:field="*{prix}"/>
             </div>
         </div>

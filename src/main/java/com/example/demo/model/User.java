@@ -12,13 +12,15 @@ import java.util.Collection;
 public class User implements Serializable, UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "IdUser", nullable = false)
     private Integer userId;
 
-    @Column
+    @Column(name = "NomUser", length = 36, nullable = false)
     private String username;
 
-    @Column
+    @Column(name = "Password", length = 128, nullable = false)
     private String password;
+
     public Integer getUserId() {
         return userId;
     }

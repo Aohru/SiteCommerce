@@ -3,7 +3,9 @@ package com.example.demo.model;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "CLIENT")
@@ -30,6 +32,13 @@ public class Client {
 
     @Column(name = "Type", nullable = false)
     private String type;
+
+    @OneToMany
+    @JoinTable( name = "Commandes_Clients",
+            joinColumns = @JoinColumn( name = "IdClient" ),
+            inverseJoinColumns = @JoinColumn( name = "IdCommande" ) )
+    private List<Commande> commandes = new ArrayList<>();
+
 
     public Client() {
     }
